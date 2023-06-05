@@ -1,0 +1,45 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.precio | currency }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>
+        <button type="button" (click)="eliminarProducto(producto)">Eliminar</button>
+        <button type="button" (click)="abrirFormularioModificacion(producto)">Modificar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<form>
+  <button type="button" (click)="agregarProducto()">Adicionar producto</button>
+</form>
+<div *ngIf="mostrarFormularioModificacion">
+  <h3>Modificar producto</h3>
+  <form (submit)="modificarProducto(nombre.value, precio.value, stock.value)">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" #nombre [value]="productoSeleccionado?.nombre" required>
+    </div>
+    <div>
+      <label for="precio">Precio:</label>
+      <input type="text" id="precio" #precio [value]="productoSeleccionado?.precio" required>
+    </div>
+    <div>
+      <label for="stock">Stock:</label>
+      <input type="text" id="stock" #stock [value]="productoSeleccionado?.stock" required>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</div>
+
+

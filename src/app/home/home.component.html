@@ -1,0 +1,16 @@
+<h1>Bienvenido a Ferretería UCB</h1>
+<p>La mejor opción para tus necesidades de herramientas y materiales de construcción.</p>
+
+<h2>Productos destacados</h2>
+<ul>
+  
+    <div class="products-container">
+      <div class="center">
+        <div *ngFor="let product of products" class="product-item">
+          <img [src]="product.image" alt="Imagen de producto" width="150"/>
+          <h3>{{ product.name }}</h3>
+          <p>Precio: ${{ product.price }}</p>
+        </div>
+      </div>
+    </div>
+</ul>
